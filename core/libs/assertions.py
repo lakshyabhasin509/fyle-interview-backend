@@ -4,6 +4,14 @@ from .exceptions import FyleError
 def base_assert(error_code, msg):
     raise FyleError(status_code=error_code, message=msg)
 
+def validation_assert(msg):
+    raise ValidationError(message=msg)
+
+    
+def assert_enum(_obj, msg="Invalid Grade"):
+    if _obj not in ["A","B","C", "D" ]:
+        validation_assert(msg=msg)
+
 
 def assert_auth(cond, msg='UNAUTHORIZED'):
     if cond is False:
